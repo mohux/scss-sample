@@ -1,5 +1,5 @@
 
-
+//* In here, we are creating similar classes to bootstrap, col-md-1, col-lg-2, etc....
 @mixin create-grid($list: "") {
   @each $name, $breakpoint in $screens {
     @for $index from 1 through $grid-columns {
