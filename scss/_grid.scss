@@ -1,0 +1,12 @@
+// @each $name, $breakpoint in $screens {
+//   @for $index from 1 through $grid-columns {
+//     @include create-grid($name, $breakpoint, $index);
+//   }
+// }
+.row {
+  flex-wrap: wrap;
+  display: flex;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+@include create-grid();

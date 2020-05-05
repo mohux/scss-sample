@@ -1,0 +1,12 @@
+{
+  "name": "enjoy",
+  "version": "1.0.0",
+  "scripts": {
+    "watch:sass": "node-sass scss/ -o css/ -w --recursive --output-style compressed"
+  },
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "node-sass": "^4.14.1"
+  }
+}

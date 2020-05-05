@@ -1,0 +1,124 @@
+@mixin create-paddings() {
+  @each $direction in $directions {
+    @each $space in $spacings {
+      $i: index($spacings, $space);
+      @include insert-space($direction, $space, $i);
+      @each $screen, $bp in $screens {
+        @include insert-space($direction, $space, $i, $screen);
+      }
+    }
+  }
+}
+
+@mixin insert-space($direction, $space, $i, $screen: 0) {
+  @if ($screen == 0) {
+    .padding-#{$direction}-#{($i)} {
+      @if ($direction == right) {
+        padding-#{$right}: $space;
+      } @else if($direction == left) {
+        padding-#{$left}: $space;
+      } @else {
+        padding-#{$direction}: $space;
+      }
+    }
+    .margin-#{$direction}-#{($i)} {
+      @if ($direction == right) {
+        margin-#{$right}: $space;
+      } @else if($direction == left) {
+        margin-#{$left}: $space;
+      } @else {
+        margin-#{$direction}: $space;
+      }
+    }
+  } @else {
+    .padding-#{$direction}-#{$screen}-#{($i)} {
+      @media (min-width: map-get($screens,$screen)) {
+        padding-#{$direction}: $space;
+      }
+    }
+    .margin-#{$direction}-#{$screen}-#{($i)} {
+      @media (min-width: map-get($screens,$screen)) {
+        @if ($direction == right) {
+          margin-#{$right}: $space;
+        } @else if($direction == left) {
+          margin-#{$left}: $space;
+        } @else {
+          margin-#{$direction}: $space;
+        }
+      }
+    }
+  }
+}
+
+@mixin borderize($name, $color) {
+  @each $direction in $directions {
+    .border-#{$direction}-#{$name} {
+      @if ($direction == right) {
+        border-#{$right}: 1px solid $color;
+      } @else if($direction == left) {
+        border-#{$left}: 1px solid $color;
+      } @else {
+        border-#{$direction}: 1px solid $color;
+      }
+    }
+    // .border-#{$direction}-2x-#{$name} {
+    //   @if ($direction == right) {
+    //     border-#{$right}: 2px solid $color;
+    //   } @else if($direction == left) {
+    //     border-#{$left}: 2px solid $color;
+    //   } @else {
+    //     border-#{$direction}: 2px solid $color;
+    //   }
+    // }
+  }
+
+  .border-#{$name} {
+    border: 1px solid $color;
+  }
+  // .border-2x-#{$name} {
+  //   border: 2px solid $color;
+  // }
+
+  .border-dashed {
+    border-style: dashed;
+  }
+}
+
+@mixin colorize($name, $color) {
+  .#{$name} {
+    color: $color;
+  }
+  .bg-#{$name} {
+    background-color: $color;
+  }
+  .btn-#{$name} {
+    background-color: $color;
+    color: #fff;
+
+    &:hover {
+      background-color: darken($color: $color, $amount: 10%);
+      color: white;
+    }
+    &:focus {
+      box-shadow: 0 0 0 0.2rem transparentize($color: $color, $amount: 0.5);
+    }
+  }
+  .btn-outline-#{$name} {
+    color: $color;
+    border: 1px solid $color;
+    &:hover {
+      background-color: darken($color: $color, $amount: 10%);
+      color: white;
+    }
+    &:focus {
+      box-shadow: 0 0 0 0.2rem transparentize($color: $color, $amount: 0.5);
+    }
+  }
+}
+
+@mixin create-colors() {
+  @each $key, $val in $colors {
+    @include colorize($key, $val);
+    @include borderize($key, $val);
+  }
+}

@@ -1,0 +1,62 @@
+$body-bg: #e4e4e4;
+
+$blue-500: #3cc3dc;
+$blue-400: #63cfe3;
+$blue-300: #8adbea;
+$blue-200: #b1e7f1;
+$blue-100: #d8f3f8;
+// orange
+$orange-500: #ff5a19;
+$orange-400: #ff7b47;
+$orange-300: #ff7b47;
+$orange-200: #ffbda3;
+$orange-100: #ffded1;
+// red
+$red-500: #b9286e;
+$red-400: #c7538b;
+$red-300: #d57ea8;
+$red-200: #e3a9c5;
+$red-100: #f1d4e2;
+// black
+$black-500: #1c1c1c;
+$black-400: #585757;
+$black-300: #969696;
+$black-200: #e4e4e4;
+$black-100: #f7f7f7;
+
+$colors: (
+  black-500: $black-500,
+  black-400: $black-400,
+  black-300: $black-300,
+  black-200: $black-200,
+  black-100: $black-100,
+  red-500: $red-500,
+  red-400: $red-400,
+  red-300: $red-300,
+  red-200: $red-200,
+  red-100: $red-100,
+  secondary-500: $orange-500,
+  secondary-400: $orange-400,
+  secondary-300: $orange-300,
+  secondary-200: $orange-200,
+  secondary-100: $orange-100,
+  primary-500: $blue-500,
+  primary-400: $blue-400,
+  primary-300: $blue-300,
+  primary-200: $blue-200,
+  primary-100: $blue-100,
+);
+
+// utils
+
+$grid-columns: 12;
+$screens: (
+  sm: 488px,
+  md: 767px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+  xxxl: 1500px,
+);
+$spacings: 0.25rem, 0.5rem, 0.75rem, 1rem, 1.25rem, 1.5rem, 2rem;
+$directions: left, right, top, bottom;

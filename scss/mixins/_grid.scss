@@ -1,0 +1,25 @@
+
+
+@mixin create-grid($list: "") {
+  @each $name, $breakpoint in $screens {
+    @for $index from 1 through $grid-columns {
+      @if ($list == "") {
+        $list: ".col-#{$name}-#{$index}";
+      } @else {
+        $list: "#{$list}, .col-#{$name}-#{$index}";
+      }
+      .col-#{$name}-#{$index} {
+        @media (min-width: $breakpoint) {
+          flex: 0 0 percentage($number: $index / $grid-columns);
+          max-width: percentage($number: $index / $grid-columns);
+        }
+      }
+    }
+  }
+  #{$list} {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    position: relative;
+  }
+}
